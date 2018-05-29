@@ -844,6 +844,7 @@ $con = mysqli_connect('localhost', "root", "qwerqwer","test");
 <!-- Container (Contact Section) -->
 <div id="contact" class="container-fluid bg-grey">
 <div id="contact" class="container-fluid bg-grey">
+<form method="POST" action="send_member.php">
   <h2 class="text-center">CONTACT</h2>
   <div class="row">
     <div class="col-sm-5">
@@ -864,12 +865,14 @@ $con = mysqli_connect('localhost', "root", "qwerqwer","test");
       <textarea class="form-control" id="comments" name="comments" placeholder="Comment" rows="5"></textarea><br>
       <div class="row">
         <div class="col-sm-12 form-group">
-          <button class="btn btn-default pull-right" type="submit">Send</button>
+          <button class="btn btn-default pull-right" type="submit" name="submit3">Send</button>
         </div>
       </div>
     </div>
   </div>
+  </form>
 </div>
+
 <script>
 $(document).ready(function(){
   // Add smooth scrolling to all links in navbar + footer link
@@ -905,8 +908,8 @@ $(document).ready(function(){
     });
   });
 })
-
-
+</script>
+<script>
 		function itemUnFunction(){
 			document.getElementById("item1").checked=false; 
 			document.getElementById("item2").checked=false; 
@@ -936,8 +939,6 @@ $(document).ready(function(){
 			document.getElementById("8").style.display="none"; 
 			document.getElementById("9").style.display="none"; 
 		}
-
-
 </script>
 </body>
 </html>

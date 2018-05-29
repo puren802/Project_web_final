@@ -281,7 +281,6 @@ $con = mysqli_connect('localhost', "root", "qwerqwer","test");
       <input type="password" placeholder="Enter Password" name="password">
       <button type="submit" name="submit" style="width: 90px; height: 40px; color: white; background-color:#f4511e">Login</button>
 	  <br>
-      <input type="checkbox" style="margin-left:10px"> Remember me
       <a href="#" style="float:center; margin-left:30px;">Forgot Password ?</a>
     </div>
    
@@ -581,7 +580,6 @@ $con = mysqli_connect('localhost', "root", "qwerqwer","test");
       <input type="password" placeholder="Enter Password" name="password">
       <button type="submit" name="submit" style="width: 90px; height: 40px; color: white; background-color:#f4511e">Login</button>
 	  <br>
-      <input type="checkbox" style="margin-left:10px"> Remember me
       <a href="#" style="float:center; margin-left:30px;">Forgot Password ?</a>
     </div>
    
@@ -606,7 +604,6 @@ $con = mysqli_connect('localhost', "root", "qwerqwer","test");
       <input type="password" placeholder="Enter Password" name="password">
       <button type="submit" name="submit" style="width: 90px; height: 40px; color: white; background-color:#f4511e">Login</button>
 	  <br>
-      <input type="checkbox" style="margin-left:10px"> Remember me
       <a href="#" style="float:center; margin-left:30px;">Forgot Password ?</a>
     </div>
    
@@ -630,7 +627,6 @@ $con = mysqli_connect('localhost', "root", "qwerqwer","test");
       <input type="password" placeholder="Enter Password" name="password">
       <button type="submit" name="submit" style="width: 90px; height: 40px; color: white; background-color:#f4511e">Login</button>
 	  <br>
-      <input type="checkbox" style="margin-left:10px"> Remember me
       <a href="#" style="float:center; margin-left:30px;">Forgot Password ?</a>
     </div>
    
@@ -642,6 +638,7 @@ $con = mysqli_connect('localhost', "root", "qwerqwer","test");
 <!-- Container (Contact Section) -->
 <div id="contact" class="container-fluid bg-grey">
 <div id="contact" class="container-fluid bg-grey">
+<form class="modal-content animate" method="POST" action="send.php">
   <h2 class="text-center">CONTACT</h2>
   <div class="row">
     <div class="col-sm-5">
@@ -662,11 +659,12 @@ $con = mysqli_connect('localhost', "root", "qwerqwer","test");
       <textarea class="form-control" id="comments" name="comments" placeholder="Comment" rows="5"></textarea><br>
       <div class="row">
         <div class="col-sm-12 form-group">
-          <button class="btn btn-default pull-right" type="submit">Send</button>
+          <button class="btn btn-default pull-right" type="submit" name="submit2">Send</button>
         </div>
       </div>
     </div>
   </div>
+  </form>
 </div>
 
 <script>

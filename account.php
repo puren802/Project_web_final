@@ -279,8 +279,9 @@ $con = mysqli_connect('localhost', 'root', 'qwerqwer', 'test');
 	color: orange;
 } 
 div.container2 {
-    width: 100%;
+    width: 90%;
 	height: 900px;
+	align:center;
 }
 
 section {
@@ -288,11 +289,11 @@ section {
     max-width: 400px;
 }
 
-
 article {
-    margin-left: 600px;
-	margin-top: 200px;
+	padding-top:100px;
+    margin-left: 800px;
 }
+
 .grid-container {
   display: grid;
   align:center;
@@ -444,7 +445,7 @@ for($total_rows2 = mysqli_num_rows($result)-1; $total_rows2 > 0 ; $total_rows2--
 
 $data = array(   array('', '금액'),   array('적립액', $in) ,array('기부액', $out)  );
 $data2 = array(   array('', '금액'),   array('적립액', $in) ,array('기부액', $out),array('현재금액', $row['total'])  );
-$options = array(   'title' => ' ',   'width' => 800, 'height' => 800);
+$options = array(   'title' => ' ',   'width' =>1000, 'height' => 500);
 ?>
 <script src="//www.google.com/jsapi"></script>
 <script>
@@ -455,7 +456,7 @@ var options = <?= json_encode($options) ?>;
 
 var options2 = {
         title: ' ',
-        chartArea: {width: '50%'},
+        chartArea: {width: '70%'},
         hAxis: {
           title: '내역',
           minValue: 0
