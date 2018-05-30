@@ -59,6 +59,7 @@ if (isset($_POST['reg_user'])) {
 	$password = $password_1;	  
 	
 	$query="INSERT INTO `test_join` (`id`, `uid`, `name`, `userID`, `password`, `password2`, `email`) VALUES (NULL, '$uid', '$name', '$userID', '$password', '$password', '$email')";
+	
   	if($db->query($query)===TRUE){
   	$_SESSION['userID'] = $userID;
   	$_SESSION['success'] = "You are now logged in";

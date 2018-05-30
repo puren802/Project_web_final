@@ -397,11 +397,14 @@ li a:hover:not(.active) {
 
 
 <?php
-$result = mysqli_query($con,"SELECT * FROM test_trade where userID='$userID'");
+$result1 = mysqli_query($con,"SELECT * FROM test_join where userID='$userID'");
+$row = mysqli_fetch_array($result1);
+$uid = $row['uid'];
+$result = mysqli_query($con,"SELECT * FROM test_trade where uid='$uid'");
 $n=1;
-
 $total_rows2 = mysqli_num_rows($result)-2;
-for($total_rows2 = mysqli_num_rows($result)-1; $total_rows2 > 0 ; $total_rows2--){
+if(total_rows2>=0){
+for($total_rows2 = mysqli_num_rows($result)-1; $total_rows2 >= 0 ; $total_rows2--){
 	
 	 mysqli_data_seek($result,$total_rows2);
 	 $row2 =mysqli_fetch_array($result);
@@ -418,6 +421,10 @@ for($total_rows2 = mysqli_num_rows($result)-1; $total_rows2 > 0 ; $total_rows2--
 			}
 			$n=$n+1;
 }
+}
+else{
+	echo "<div style=background-color:#f1f1f1;>"."<dt>"."입출금 내역이 없습니다.";
+}
 ?>
 </div>
   
@@ -426,7 +433,7 @@ for($total_rows2 = mysqli_num_rows($result)-1; $total_rows2 > 0 ; $total_rows2--
  <div class="text-center">
   <h3>거래 내역 그래프</h3>
   <?php
-	$query="SELECT * FROM test_trade where userID='$userID'";
+	$query="SELECT * FROM test_trade where uid='$uid'";
 	$exec = mysqli_query($con,$query);
 	$in=0;
 	$out=0;

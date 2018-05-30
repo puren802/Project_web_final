@@ -281,7 +281,7 @@ $con = mysqli_connect('localhost', "root", "qwerqwer","test");
       <input type="password" placeholder="Enter Password" name="password">
       <button type="submit" name="submit" style="width: 90px; height: 40px; color: white; background-color:#f4511e">Login</button>
 	  <br>
-      <a href="#" style="float:center; margin-left:30px;">Forgot Password ?</a>
+     <!-- <a href="#" style="float:center; margin-left:30px;">Forgot Password ?</a> -->
     </div>
    
   </form>
@@ -580,7 +580,6 @@ $con = mysqli_connect('localhost', "root", "qwerqwer","test");
       <input type="password" placeholder="Enter Password" name="password">
       <button type="submit" name="submit" style="width: 90px; height: 40px; color: white; background-color:#f4511e">Login</button>
 	  <br>
-      <a href="#" style="float:center; margin-left:30px;">Forgot Password ?</a>
     </div>
    
   </form>
@@ -604,7 +603,6 @@ $con = mysqli_connect('localhost', "root", "qwerqwer","test");
       <input type="password" placeholder="Enter Password" name="password">
       <button type="submit" name="submit" style="width: 90px; height: 40px; color: white; background-color:#f4511e">Login</button>
 	  <br>
-      <a href="#" style="float:center; margin-left:30px;">Forgot Password ?</a>
     </div>
    
   </form>
@@ -627,7 +625,6 @@ $con = mysqli_connect('localhost', "root", "qwerqwer","test");
       <input type="password" placeholder="Enter Password" name="password">
       <button type="submit" name="submit" style="width: 90px; height: 40px; color: white; background-color:#f4511e">Login</button>
 	  <br>
-      <a href="#" style="float:center; margin-left:30px;">Forgot Password ?</a>
     </div>
    
   </form>

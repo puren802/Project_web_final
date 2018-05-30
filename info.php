@@ -392,30 +392,44 @@ li a:hover:not(.active) {
   <h2 style="color:#f4511e">Drop the bit</h2>
   <p style="font-size:20px;"><strong>사랑</strong>으로 자라는 아이들.</p>
   <p style="font-size:20px;">여러분의 <strong>나눔</strong>으로 <strong>희망</strong>을 꿈꿉니다.</p>
-  
+
   <div style=" background-color:#f5f5f5; border: 3px solid #f1f1f1; width: 50%;">
-  <table>
+  <table style="width:100%">
   <tr><td>
-  <p><?=$userID?> 후원자님, 환영합니다!</p></td><td><p style="> uid번호:</p></td>
+  <p><?=$userID?> 후원자님, 환영합니다!</p></td><td align="right"><p> uid번호:
+  <?php
+  $query1 = "SELECT * FROM test_join where userID like '$userID';";
+	$result1 = mysqli_query($con, $query1);
+	$row1 = mysqli_fetch_array($result1);
+	$uid = $row1['uid'];
+	echo $row1['uid'];
+  ?>
+  </p></td></tr>
   </table>
   </div>
   <?php
-		$result = mysqli_query($con,"SELECT * FROM test_trade where userID='$userID'");
+		$query2 = "SELECT * FROM test_trade where uid like '$uid';";
+		$result2 = mysqli_query($con,$query2);
 		$n=1;
-		$ndate='';
-		$nout=0;
-		$total_rows=mysqli_num_rows($result)-1;
-		mysqli_data_seek($result,$total_rows);
-		$row2 =mysqli_fetch_array($result);
+		$ndate='최근 날짜 데이터가 없습니다.';
+		$nout='최근 후원 금액이 없습니다.';
+		$total_rows=mysqli_num_rows($result2)-1;
+		if($total_rows>=0){
+		mysqli_data_seek($result2,$total_rows);
+		$row2 =mysqli_fetch_array($result2);
 		do{
 			$nout=$row2['out'];
-			mysqli_data_seek($result,$total_rows);
-			$row2 =mysqli_fetch_array($result);
+			mysqli_data_seek($result2,$total_rows);
+			$row2 =mysqli_fetch_array($result2);
 			$ndate = $row2['date'];
 			$nout=$row2['out'];
 			$total_rows=$total_rows-1;
 		}
-		while($row2['out']==null);
+		while($row2['out']==0);
+		}
+		else{
+			
+		}
 	?>
   
   
@@ -424,20 +438,20 @@ li a:hover:not(.active) {
   <tr><td  style="border-bottom: 2px dotted red;"><h3 style="color:#f4511e">후원금 내역 </h3></td>
   <tr>
     <td style="padding-left:10px; width: 50%; border-bottom:2px solid lightgray; padding-bottom:10px; padding-right:12px; padding-top:12px; text-align:justify">
-	<p style="margin-bottom:-10px;">최근 후원일 :<?=$ndate?></p>
+	<p style="margin-bottom:-10px;">최근 후원일 : <?=$ndate?></p>
 	</td>
 	<tr>
-	<td style="padding-left:10px; padding-top:12px; padding-bottom:10px; border-bottom:2px solid lightgray; text-align:justify"> <p style="margin-bottom:-10px;">최근 후원 금액:<?=$nout?></p>
+	<td style="padding-left:10px; padding-top:12px; padding-bottom:10px; border-bottom:2px solid lightgray; text-align:justify"> <p style="margin-bottom:-10px;">최근 후원 금액 : <?=$nout?></p>
 	</td></tr>
 	<tr>
-	<td style="padding-left:10px; padding-top:12px; padding-bottom:10px; border-bottom:2px solid lightgray; text-align:justify"> <p style="margin-bottom:-10px;">총 후원 금액: 
+	<td style="padding-left:10px; padding-top:12px; padding-bottom:10px; border-bottom:2px solid lightgray; text-align:justify"> <p style="margin-bottom:-10px;">총 후원 금액 : 
 	<?php
-	$query="SELECT * FROM test_trade where userID='$userID'";
-	$result = mysqli_query($con,$query);
+	$query3="SELECT * FROM test_trade where uid='$uid'";
+	$result3 = mysqli_query($con,$query3);
 	$total=0;
-	while($row=mysqli_fetch_array($result)){
-		if($row['out']!=null){
-		$total = $total + $row['out'];
+	while($row3=mysqli_fetch_array($result3)){
+		if($row3['out']!=0){
+		$total = $total + $row3['out'];
 		}
 	}
 	echo $total;
@@ -458,7 +472,7 @@ li a:hover:not(.active) {
   <p>Some text..</p>
   <p>Some text..</p>
 </div>
-
+</div>
 
 <script>
 $(document).ready(function(){

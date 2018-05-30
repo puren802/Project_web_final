@@ -6,14 +6,17 @@
 	}
 	$userID=$_SESSION['userID'];
 	$pre_total=0;
-	$item = '알수없음';
 	if(!isset($_POST['submit'])) {
 		//$query = "SELECT * FROM test_join";
 		$item = $_POST['item'];
 		$Price= $_POST['price'];
 		$password= $_POST['password'];
-	
-		$query = "select * from test_trade where userID like '$userID';";
+		
+		$result1 = mysqli_query($con,"SELECT * FROM test_join where userID='$userID'");
+		$row = mysqli_fetch_array($result1);
+		$uid = $row['uid'];
+		
+		$query = "select * from test_trade where uid like '$uid';";
 			
 		$result =mysqli_query($con,$query);
 		
@@ -28,7 +31,7 @@
 		$modi_total = $pre_total-$Price;
 		
 		
-		$pass_check_query = "SELECT * FROM test_join WHERE userID='$userID'";
+		$pass_check_query = "SELECT * FROM test_join WHERE uid='$uid'";
 		$check_result = mysqli_query($con, $pass_check_query);
 		$user = mysqli_fetch_assoc($check_result);
 
@@ -37,7 +40,7 @@
 				if($Price != "0"){
 					if($item != NULL){
 						$mysql_qry2="INSERT INTO `test_trade` (`number`, `uid`, `name`, `userID`, `in`, `out`, `total`, `point_in`, `point_out`, `point_total`, `content_name`, `date`)
-						VALUES (NULL, '', '', '$userID', '0', '$Price', '$modi_total', '0', '0', '0', '$item', CURRENT_TIMESTAMP);";				
+						VALUES (NULL, '$uid', '', '$userID', '0', '$Price', '$modi_total', '0', '0', '0', '$item', CURRENT_TIMESTAMP);";				
 						mysqli_query($con,$mysql_qry2);
 						echo "<script>alert('기부 완료!');
 						window.location.replace('members.php');
